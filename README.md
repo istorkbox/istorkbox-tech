@@ -1,2 +1,2 @@
 # istorkbox-tech
-istorkbox Tech
+Tech
