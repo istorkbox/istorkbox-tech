@@ -1,6 +1,7 @@
 Centos7下mongodb安装和配置
 
 - 下载安装包
+
 `curl -O http://downloads.mongodb.org/linux/mongodb-linux-x86_64-3.6.5.tgz`
 
 - 解压
@@ -29,7 +30,7 @@ vi mongodb.conf
 
 配置如下:
 
-``
+```
 dbpath = /usr/local/mongodb/data/db #数据文件存放目录
 logpath = /usr/local/mongodb/logs/mongodb.log #日志文件存放目录
 port = 27017 #端口
