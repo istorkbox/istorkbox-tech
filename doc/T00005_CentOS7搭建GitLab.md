@@ -145,6 +145,9 @@ enabled=1
 
 [更改GitLab默认端口](https://blog.csdn.net/wizard_rp/article/details/73147129)
 
+本机最后访问地址:
+
+http://192.168.1.119:8050/]
 
 相关参考
 
