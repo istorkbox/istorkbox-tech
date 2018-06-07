@@ -1,6 +1,7 @@
 Centos7安装JDK8
 
 - 卸载系统中的OpenJDK
+
 OpenJDK与JDK的区别：http://www.cnblogs.com/sxdcgaq8080/p/7487369.html 
 
 卸载方法：http://www.cnblogs.com/ystq/p/5972608.html
