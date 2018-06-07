@@ -14,6 +14,10 @@
 
 - find `find / -name '文件名'`
 
+- unzip `unzip 文件名` 或 `unzip 文件名 -d 目录名`
+
+- cnpn 	`npm install -g cnpm --registry=https://registry.npm.taobao.org`
+
 - CentOS7关闭防火墙
 
  `systemctl stop firewalld`临时关闭
