@@ -1,4 +1,4 @@
-###1.准备环境
+### 1.准备环境
 
 在正式开始安装之前，先更新软件包并打开相关服务的权限。
 
@@ -80,7 +80,7 @@ swapon /root/swapfile
 
 `/root/swapfile swap swap defaults 0 0`
 
-###2.安装 GitLab
+### 2.安装 GitLab
 
 - 将软件源修改为国内源
 由于网络环境的原因，将 repo 源修改为*[清华大学]*。
@@ -110,7 +110,7 @@ enabled=1
  `yum install -y gitlab-ce`
 
 
-###3.初始化 GitLab
+### 3.初始化 GitLab
 
 - 配置 GitLab 的域名（非必需）
 
@@ -130,7 +130,7 @@ enabled=1
 
  `sudo gitlab-ctl reconfigure`
 
-###4.GitLab 安装已完成
+### 4.GitLab 安装已完成
 
 开始使用吧！
 至此，我们已经成功地在 CentOS 7 上搭建了 GitLab。 现在可以在这里（http://<您的 CVM IP 地址>/）访问 GitLab 了。
@@ -139,7 +139,7 @@ enabled=1
 再次提醒您，定期执行 yum update -y 以保持各软件包的最新状态。
 谢谢！
 
-###5.GitLab 相关配置
+### 5.GitLab 相关配置
 
 [GitLab服务器IP地址设置](https://blog.csdn.net/yulei_qq/article/details/53134654)
 
