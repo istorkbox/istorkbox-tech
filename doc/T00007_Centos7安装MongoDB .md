@@ -96,7 +96,7 @@ firewall-cmd --reload
    切换到test数据库
    use demo
    创建用户名、密码、角色
-   db.createUser({user:"root3",pwd:"123456",roles:[{role:"readWrite",db:"demo"}]})
+   db.createUser({user:"root",pwd:"123456",roles:[{role:"readWrite",db:"demo"}]})
    db.createUser({
 	user: "root",
 	pwd: "123456",
@@ -106,7 +106,7 @@ firewall-cmd --reload
 	})
    验证mongodb数据库权限。
    use demo
-   db.auth('root3','123456')
+   db.auth('root','123456')
  ```   
 
  查看数据库列表： 
@@ -117,10 +117,13 @@ firewall-cmd --reload
  
    
 - mongodb数据库可视化工具
+
 https://robomongo.org/download
+
 安装后直接使用 
 
 - MongoDB3.0用户创建(参考文章)
+
 在安装MongoDB之后，先关闭auth认证，进入查看数据库，只有一个local库，admin库是不存在的：
 
 ```
@@ -140,12 +143,12 @@ local  0.078GB
 > use admin
 switched to db admin
 > db.createUser(
-...   {
-...     user: "dba",
-...     pwd: "dba",
-...     roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
-...   }
-... )
+   {
+     user: "dba",
+     pwd: "dba",
+     roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+   }
+ )
 Successfully added user: {
     "user" : "dba",
     "roles" : [
@@ -228,14 +231,14 @@ local  0.078GB
 > use test        #在test库里创建帐号
 switched to db test
 > db.createUser(
-...     {
-...       user: "zjyr",
-...       pwd: "zjyr",
-...       roles: [
-...          { role: "read", db: "test" }    #只读帐号
-...       ]
-...     }
-... )
+     {
+       user: "zjyr",
+       pwd: "zjyr",
+       roles: [
+          { role: "read", db: "test" }    #只读帐号
+       ]
+     }
+ )
 Successfully added user: {
     "user" : "zjyr",
     "roles" : [
@@ -246,14 +249,14 @@ Successfully added user: {
     ]
 }
 > db.createUser(
-...     {
-...       user: "zjy",
-...       pwd: "zjy",
-...       roles: [
-...          { role: "readWrite", db: "test" }   #读写帐号
-...       ]
-...     }
-... )
+     {
+       user: "zjy",
+       pwd: "zjy",
+       roles: [
+          { role: "readWrite", db: "test" }   #读写帐号
+       ]
+     }
+ )
 Successfully added user: {
     "user" : "zjy",
     "roles" : [
@@ -344,14 +347,14 @@ WriteResult({
 > db.auth('dba','dba')
 1
 > db.createUser(
-...  {
-...    user: "zhoujinyi",
-...    pwd: "zhoujinyi",
-...    roles: [
-...       { role: "root", db: "admin" }      #超级root帐号
-...    ]
-...  }
-... )
+  {
+    user: "zhoujinyi",
+    pwd: "zhoujinyi",
+    roles: [
+       { role: "root", db: "admin" }      #超级root帐号
+    ]
+  }
+ )
 Successfully added user: {
     "user" : "zhoujinyi",
     "roles" : [
@@ -411,15 +414,15 @@ WriteResult({ "nRemoved" : 2 })
 > db
 admin
 > db.createUser(
-...  {
-...    user: "dxy",
-...    pwd: "dxy",
-...    roles: [
-...       { role: "readWrite", db: "test" },     #在当前库下创建其他库的帐号，在admin库下创建test、abc库的帐号
-...       { role: "readWrite", db: "abc" }         
-...    ]
-...  }
-... )
+  {
+    user: "dxy",
+    pwd: "dxy",
+    roles: [
+       { role: "readWrite", db: "test" },     #在当前库下创建其他库的帐号，在admin库下创建test、abc库的帐号
+       { role: "readWrite", db: "abc" }         
+    ]
+  }
+ )
 Successfully added user: {
     "user" : "dxy",
     "roles" : [
