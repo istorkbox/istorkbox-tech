@@ -12,7 +12,7 @@
 
   版本(CentOS-7-x86_64-DVD-1708.iso)
 
- [官网下载新版](https://www.centos.org/download/)
+ [官网下载新版DVD ISO](https://www.centos.org/download/)
  
  [安装好的镜像](https://share.weiyun.com/5TTFKcH)
 

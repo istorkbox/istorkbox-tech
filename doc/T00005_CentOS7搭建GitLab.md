@@ -1,7 +1,5 @@
 ###1.准备环境
 
->任务时间：5min ~ 10min
-
 在正式开始安装之前，先更新软件包并打开相关服务的权限。
 
 - 更新软件包
@@ -84,8 +82,6 @@ swapon /root/swapfile
 
 ###2.安装 GitLab
 
-> 任务时间：10min ~ 15min
-
 - 将软件源修改为国内源
 由于网络环境的原因，将 repo 源修改为*[清华大学]*。
 
@@ -116,8 +112,6 @@ enabled=1
 
 ###3.初始化 GitLab
 
-> 任务时间：10min ~ 15min
-
 - 配置 GitLab 的域名（非必需）
 
  打开 /etc/gitlab/gitlab.rb 文件，在第 13 行附近找到 external_url 'http://gitlab.example.com'，将单引号中的内容改为自己的域名（带上协议头，末尾无斜杠），并按 Ctrl + S 保存。
@@ -141,6 +135,18 @@ enabled=1
 开始使用吧！
 至此，我们已经成功地在 CentOS 7 上搭建了 GitLab。 现在可以在这里（http://<您的 CVM IP 地址>/）访问 GitLab 了。
 
-在实际生产中，建议您使用 2 核 4 GB 或更高配置的 CVM。点击这里 可以查看 GitLab 官方推荐的配置和可承载人数对应表。
+在实际生产中，建议您使用 2 核 4 GB 或更高配置的 CVM。[点击这里](https://docs.gitlab.com/ce/install/requirements.html#cpu) 可以查看 GitLab 官方推荐的配置和可承载人数对应表。
 再次提醒您，定期执行 yum update -y 以保持各软件包的最新状态。
 谢谢！
+
+###5.GitLab 相关配置
+
+[GitLab服务器IP地址设置](https://blog.csdn.net/yulei_qq/article/details/53134654)
+
+[更改GitLab默认端口](https://blog.csdn.net/wizard_rp/article/details/73147129)
+
+
+相关参考
+
+> [腾讯云实验室-基于CentOS7搭建GitLab](https://cloud.tencent.com/developer/labs/lab/10288)
+
