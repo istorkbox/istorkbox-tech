@@ -16,11 +16,7 @@
 
 - CentOS7关闭防火墙
 
- 临时关闭
+ `systemctl stop firewalld`临时关闭
  
- `systemctl stop firewalld`
- 
- 禁止开机启动
- 
- `systemctl disable firewalld`
+ `systemctl disable firewalld`禁止开机启动
 
