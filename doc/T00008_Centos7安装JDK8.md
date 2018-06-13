@@ -53,6 +53,8 @@ python-javapackages-3.4.1-11.el7.noarch
 
 下载页：http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
+[jdk-8u171-linux-x64.tar.gz](https://share.weiyun.com/5Qf4cHs)
+
 
 - 上传完成后解压tar包 
 
@@ -60,11 +62,11 @@ python-javapackages-3.4.1-11.el7.noarch
  
 `cd /usr/local/src`
 
-`tar -zxvf jdk-8u152-linux-x64.tar.gz`
+`tar -zxvf jdk-8u171-linux-x64.tar.gz`
 
 将解压后的文件夹剪切到usr/local目录下，并改名为jdk8 
 
-`mv jdk1.8_152 ../jdk8`
+`mv jdk1.8.0_171 ../jdk8`
 
 - 配置环境变量 
 
