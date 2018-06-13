@@ -1,5 +1,5 @@
 #!/bin/bash
-#jdk-8u171-linux-x64.tar.gz
+#git-2.17.1.tar.gz
 #https://cloud.tencent.com/developer/labs/lab/10045
 
 #1.下载安装 git
@@ -14,7 +14,7 @@ yum -y install gcc perl-ExtUtils-MakeMaker
 #安装包放在/usr/local/src目录里
 cd /usr/local/src
 wget https://www.kernel.org/pub/software/scm/git/git-2.17.1.tar.gz
-# download from tencent cloud
+#download from tencent cloud
 #wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/git-2.17.1.tar.gz
 
 #解压和编译

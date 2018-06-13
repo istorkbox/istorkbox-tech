@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #node-v9.9.0-linux-x64.tar.gz
 #文件来自阿里云镜像
 #https://npm.taobao.org/mirrors/node

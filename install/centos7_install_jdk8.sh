@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #jdk-8u171-linux-x64.tar.gz
 #https://blog.csdn.net/ithomer/article/details/9288353
 
