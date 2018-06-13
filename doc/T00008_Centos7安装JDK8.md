@@ -55,10 +55,18 @@ python-javapackages-3.4.1-11.el7.noarch
 
 微云下载：[jdk-8u171-linux-x64.tar.gz](https://share.weiyun.com/5Qf4cHs)
 
+直接下载:
+
+```
+cd /usr/local/src
+
+sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz"
+
+```
 
 - 上传完成后解压tar包 
 
-切换到 user/local/src目录下上传tar包 ：
+切换到usr/local/src目录下上传tar包 ：
  
 `cd /usr/local/src`
 
