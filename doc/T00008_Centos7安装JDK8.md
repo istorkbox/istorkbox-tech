@@ -51,9 +51,9 @@ python-javapackages-3.4.1-11.el7.noarch
 
 下载地址到oracle官网点击下载后，在浏览器下载上传至Centos7.
 
-下载页：http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+官网下载：http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
-[jdk-8u171-linux-x64.tar.gz](https://share.weiyun.com/5Qf4cHs)
+微云下载：[jdk-8u171-linux-x64.tar.gz](https://share.weiyun.com/5Qf4cHs)
 
 
 - 上传完成后解压tar包 
