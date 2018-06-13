@@ -1,4 +1,5 @@
 #!/bin/bash
+#jdk-8u171-linux-x64.tar.gz
 #https://blog.csdn.net/ithomer/article/details/9288353
 
 echo 'start install jdk8'
@@ -14,15 +15,15 @@ fi
 cd /usr/local
 
 # check downloads directory
-if [ ! -d 'download' ]; then
-	mkdir 'download'
+if [ ! -d 'src' ]; then
+	mkdir 'src'
 fi
 
 #download jdk8 and install
 if type java >/dev/null 2>&1; then
 	echo "jdk8 has installed, java home:$JAVA_HOME"
 else
-	cd 'download'
+	cd 'src'
 	
 	if [ ! -f 'jdk-8u171-linux-x64.tar.gz' ]; then
 	  # download file from oracle website
