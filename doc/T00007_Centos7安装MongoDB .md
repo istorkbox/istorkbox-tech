@@ -97,13 +97,6 @@ firewall-cmd --reload
    use demo
    创建用户名、密码、角色
    db.createUser({user:"root",pwd:"123456",roles:[{role:"readWrite",db:"demo"}]})
-   db.createUser({
-	user: "root",
-	pwd: "123456",
-	roles: [
-		{ role: "readWrite", db: "demo" }
-		]
-	})
    验证mongodb数据库权限。
    use demo
    db.auth('root','123456')
@@ -119,6 +112,8 @@ firewall-cmd --reload
 - mongodb数据库可视化工具
 
 https://robomongo.org/download
+
+https://github.com/mrvautin/adminMongo
 
 安装后直接使用 
 
