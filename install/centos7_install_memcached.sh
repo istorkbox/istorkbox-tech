@@ -10,6 +10,10 @@ else
 	yum -y install wget
 fi
 
+#install lib
+yum -y install libevent
+yum -y install libevent-devel
+
 #check dir
 cd /usr/local/
 if [ ! -d 'src' ]; then
@@ -25,8 +29,9 @@ else
 	#download from tencent cloud
 	#wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/memcached-1.5.8.tar.gz
 	tar -zxvf memcached-1.5.8.tar.gz
-	cd memcached1.5.8
-	./configure --prefix=/usr/local/memcached && make && make test && sudo make install
+	cd memcached-1.5.8
+	rm -rf /usr/local/memcached
+	./configure --prefix=/usr/local/memcached && make && sudo make install
 	
 	if type memcached >/dev/null 2>&1;  then
 		echo "memcached install success"
@@ -37,3 +42,7 @@ else
 	cd /usr/local/src
 	rm memcached-1.5.8.tar.gz
 fi
+
+#cd /usr/local/memcached/bin
+
+#./memcached -d -m 2048 -l 127.0.0.1 -p 11211 -u root -c 1024 –P /var/memcached/memcached.pid
