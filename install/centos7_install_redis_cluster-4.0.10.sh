@@ -4,6 +4,9 @@ useradd -s /bin/bash redis
 
 workingdir='/home/redis'
 
+#install some software
+yum -y install gcc automake autoconf libtool make gcc-c++
+
 cd /usr/local/src/
 if [ -d /usr/local/redis/ ];
 then 
