@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#Mysql5.6源码编译安装
-#mysql-5.6.40.tar.gz
+#Mysql5.6 Compressed TAR Archive压缩文件安装
+#mysql-5.6.40-linux-glibc2.12-x86_64.tar.gz
 #https://github.com/hhhcommon/Linux-Tutorial/blob/master/markdown-file/Mysql-Install-And-Settings.md
 #http://www.zhimengzhe.com/bianchengjiaocheng/qitabiancheng/284820.html
 #http://dev.mysql.com/downloads/mysql/5.6.html#downloads
@@ -12,28 +12,34 @@ yum install -y make gcc-c++ cmake bison-devel ncurses-devel
 #下载文件
 cd /usr/local/src
 
-#wget http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.40.tar.gz
-wget https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.40.tar.gz
 
-#解压和进入解压目录
-tar zxvf mysql-5.6.40.tar.gz
-cd mysql-5.6.40
+if [ ! -f 'mysql-5.6.40.tar.gz' ]; then
+	# download file from https://dev.mysql.com/downloads/mysql/5.6.html#downloads
+    sudo wget https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.40-linux-glibc2.12-x86_64.tar.gz
+  # download file from tencent clund
+  # sudo wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/mysql-5.6/mysql-5.6.40.tar.gz
+fi
+
+if [ -f 'mysql-5.6.40.tar.gz' ]; then
+	#解压和进入解压目录
+	tar zxvf /mysql-5.6.40-linux-glibc2.12-x86_64.tar.gz
+	cd mysql-5.6.40
+	#移动目录
+	mv mysql-5.6.40 /usr/local/mysql
+else
+	#解压和进入解压目录
+	tar zxvf /mysql-5.6.40-linux-glibc2.12-x86_64.tar.gz
+	cd mysql-5.6.40-linux-glibc2.12-x86_64
+	#移动目录
+	mv mysql-5.6.40-linux-glibc2.12-x86_64 /usr/local/mysql
+fi
 
 #生成安装目录
 mkdir -p /var/lib/mysql/data/
 
-#生成配置（使用 InnoDB）
-cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/var/lib/mysql/data/ -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DDEFAULT_CHARSET=utf8mb4 -DDEFAULT_COLLATION=utf8mb4_unicode_ci -DWITH_EXTRA_CHARSETS:STRING=utf8mb4 -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DENABLED_LOCAL_INFILE=1
-
-#编译,这个过程比较漫长,一般都在30分钟左右,具体还得看机子配置，如果最后结果有error,建议删除整个 mysql目录后重新解压一个出来继续处理 
-make
-
-#安装
-make install
-
 ##zip file use in other machine
 # cd /local/usr/
-# tar zcvf mysql-5.6.40.tar.gz *
+#tar zcvf mysql-5.6.40.tar.gz *
 
 #配置开机启动：
 cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql
@@ -83,7 +89,6 @@ service mysql start
 
 #查看是否已经启动
 ps aux | grep mysql
-
 
 ##登录连接
 ##默认安装情况下，root 的密码是空，所以为了方便我们可以设置一个密码，假设我设置为：123456
