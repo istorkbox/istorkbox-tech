@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#数据库登录用户名和密码:root/123456
 #Mysql5.6 Compressed TAR Archive压缩文件安装
 #mysql-5.6.40-linux-glibc2.12-x86_64.tar.gz
 #https://github.com/hhhcommon/Linux-Tutorial/blob/master/markdown-file/Mysql-Install-And-Settings.md
@@ -97,15 +98,15 @@ ps aux | grep mysql
 ##默认安装情况下，root 的密码是空，所以为了方便我们可以设置一个密码，假设我设置为：123456
 
 ##终端下执行：
-#mysql -uroot
+mysql -uroot
 
 ##现在进入了 mysql 命令行管理界面，输入：
-#SET PASSWORD = PASSWORD('123456');FLUSH PRIVILEGES;
+SET PASSWORD = PASSWORD('123456');FLUSH PRIVILEGES;
 
 ##quit退出再执行,输入密码：123456
-#quit
-#mysql -uroot -p
-
+quit
+mysql -uroot -p123456
+quit
 
 ##连接报错："Host '192.168.1.133' is not allowed to connect to this MySQL server"
 ##不允许除了 localhost 之外去连接，解决办法，进入 MySQL 命令行，输入下面内容：

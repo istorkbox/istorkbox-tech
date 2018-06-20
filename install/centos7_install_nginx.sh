@@ -7,6 +7,7 @@
 #安装依赖包
 ##开始安装：
 #安装依赖包：
+yum -y update
 yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel curl
 
 #预设几个文件夹，方便等下安装的时候有些文件可以进行存放：
@@ -76,9 +77,9 @@ ps aux | grep nginx
 #检查 Nginx 是否启动并监听了 80 端口：
 netstat -ntulp | grep 80
 
-#访问本机IP(如本机IP是:139.199.200.208),如果能看到：
+#访问127.0.0.1或本机IP(如本机IP是:139.199.200.208),如果能看到：
 #Welcome to nginx!，即可表示安装成功
-curl 139.199.200.208
+curl 127.0.0.1
 
 
 ##检查 Nginx 启用的配置文件是哪个：
