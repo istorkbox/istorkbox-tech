@@ -1,6 +1,7 @@
-
-keeper-3.4.12.tar.gz
+#!/bin/bash
+#keeper-3.4.12.tar.gz
 #安装文件镜像
+#https://github.com/hhhcommon/Linux-Tutorial/blob/master/markdown-file/Zookeeper-Install.md
 #http://www.apache.org/dyn/closer.cgi/zookeeper/
 #https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.12/zookeeper-3.4.12.tar.gz
 #https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/zookeeper-3.4.12.tar.gz
