@@ -15,9 +15,9 @@ cd /usr/local/src
 
 if [ ! -f 'mysql-5.6.40.tar.gz' ]; then
 	# download file from https://dev.mysql.com/downloads/mysql/5.6.html#downloads
-        sudo wget https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.40-linux-glibc2.12-x86_64.tar.gz
-        # download file from tencent clund
-        #sudo wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/mysql-5.6/mysql-5.6.40.tar.gz
+    #sudo wget https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.40-linux-glibc2.12-x86_64.tar.gz
+    # download file from tencent clund
+    sudo wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/mysql-5.6/mysql-5.6.40.tar.gz
 fi
 
 if [ -f 'mysql-5.6.40.tar.gz' ]; then
