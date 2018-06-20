@@ -65,5 +65,5 @@ cd /usr/local/zooweb/
 nohup java -jar zooweb-1.1.jar
 
 # 查询是否能访问
-cur http://localhost:9345
+curl http://localhost:9345
 
