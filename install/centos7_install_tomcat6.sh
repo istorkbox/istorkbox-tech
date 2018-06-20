@@ -34,7 +34,7 @@ cd /usr/local/tomcat6
 /usr/local/tomcat6/bin/startup.sh
 
 # 查询是否能访问
-curl http://127.0.0.1:8080/
+curl http://localhost:8080/
 
 ##停止:
 # /usr/local/tomcat6/bin/shutdown.sh
