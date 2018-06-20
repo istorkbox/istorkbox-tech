@@ -93,13 +93,16 @@ firewall-cmd --reload
  
  以用户管理员身份登录，并切换数据库，创建数据库用户：
  ``` 
-   切换到test数据库
+   // 切换到test数据库
    use demo
-   创建用户名、密码、角色
+   //创建用户名、密码、角色
    db.createUser({user:"root",pwd:"123456",roles:[{role:"readWrite",db:"demo"}]})
-   验证mongodb数据库权限。
+   
+   //验证mongodb数据库权限。
    use demo
    db.auth('root','123456')
+   // 插入测试数据
+   db.demo.insert({"type":1,"name":"db"})
  ```   
 
  查看数据库列表： 
