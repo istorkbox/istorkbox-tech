@@ -91,6 +91,22 @@ service mysql start
 #查看是否已经启动
 ps aux | grep mysql
 
+#通过脚本修改密码
+mysql -uroot -e "  
+tee /tmp/temp.log  
+SET PASSWORD = PASSWORD('123456');
+FLUSH PRIVILEGES; 
+notee  
+quit"  
+
+mysql -uroot -p123456 -e "  
+tee /tmp/temp.log  
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
+FLUSH PRIVILEGES; 
+notee  
+quit"  
+
+
 ##+------------------+----------+--------------+------------------+-------------------+
 ##|                                    MySQL修改密码                                  |
 ##+------------------+----------+--------------+------------------+-------------------+
@@ -98,15 +114,15 @@ ps aux | grep mysql
 ##默认安装情况下，root 的密码是空，所以为了方便我们可以设置一个密码，假设我设置为：123456
 
 ##终端下执行：
-mysql -uroot
+#mysql -uroot
 
 ##现在进入了 mysql 命令行管理界面，输入：
-SET PASSWORD = PASSWORD('123456');FLUSH PRIVILEGES;
+#SET PASSWORD = PASSWORD('123456');FLUSH PRIVILEGES;
 
 ##quit退出再执行,输入密码：123456
-quit
-mysql -uroot -p123456
-quit
+#quit
+#mysql -uroot -p123456
+#quit
 
 ##连接报错："Host '192.168.1.133' is not allowed to connect to this MySQL server"
 ##不允许除了 localhost 之外去连接，解决办法，进入 MySQL 命令行，输入下面内容：
