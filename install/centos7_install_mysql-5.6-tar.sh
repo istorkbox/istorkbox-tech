@@ -82,7 +82,9 @@ ln -s /usr/local/mysql/bin/mysqlslap /usr/bin
 
 #MySQL配置
 cd /usr/local/src
-wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/mysql-5.6/mysql-5.6.40-my.cnf
+wget https://github.com/istorkbox/istorkbox-tech/raw/master/install/mysql-5.6/mysql-5.6.40-my.cnf
+#download from tencent cloud
+#wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/mysql-5.6/mysql-5.6.40-my.cnf
 yes|cp -f mysql-5.6.40-my.cnf /etc/my.cnf
 
 #启动 Mysql 服务器

@@ -16,7 +16,9 @@ if [ ! -f 'redis-4.0.10.tar.gz' ]; then
 fi
 
 if [ ! -f 'redis.conf' ]; then
-wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/redis-4.0.10/redis.conf
+    wget https://github.com/istorkbox/istorkbox-tech/raw/master/install/redis-4.0.10/redis.conf
+    #download from tencent cloud
+    #wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/redis-4.0.10/redis.conf
 fi
 
 sleep 5s
