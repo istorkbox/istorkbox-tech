@@ -74,7 +74,7 @@ wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/mycat-1.6.tar.gz
 
 #解压
 tar -zxvf mycat-1.6.tar.gz
-mv /usr/local/src/mycat-1.6.tar.gz /usr/local/mycat
+mv /usr/local/src/mycat-1.6 /usr/local/mycat
 
 #设置 Mycat 的环境变量vim /etc/profile，添加如下内容：
 echo "MYCAT_HOME=/usr/local/mycat" >> /etc/profile
