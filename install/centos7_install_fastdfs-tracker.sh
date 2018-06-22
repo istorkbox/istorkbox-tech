@@ -14,6 +14,8 @@ echo "本机ip为:$install_ip"
 yum -y install perl gcc
 cd /usr/local/src
 wget -c https://github.com/happyfish100/libfastcommon/archive/V1.0.36.tar.gz -O libfastcommon-1.0.36.tar.gz
+# download from tencent cloud
+#wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/libfastcommon-1.0.36.tar.gz
 tar -zxvf libfastcommon-1.0.36.tar.gz
 cd libfastcommon-1.0.36
 ./make.sh
@@ -22,6 +24,8 @@ cd libfastcommon-1.0.36
 #编译安装fastdfs
 cd /usr/local/src
 wget -c https://github.com/happyfish100/fastdfs/archive/V5.11.tar.gz -O fastdfs-5.11.tar.gz
+# download from tencent cloud
+#wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/fastdfs-5.11.tar.gz
 tar -zxvf fastdfs-5.11.tar.gz
 mv fastdfs-5.11 /usr/local/fastdfs
 cd /usr/local/fastdfs
