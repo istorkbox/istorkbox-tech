@@ -18,7 +18,7 @@ install_version=fastdfs-5.11
 install_ip=`ip addr |grep inet |egrep -v "inet6|127.0.0.1" |awk '{print $2}' |awk -F "/" '{print $1}'`
 echo "当前目录为:$install_dir"
 echo "当前版本为:$install_version"
-echo "本机ip为:$install_ip"
+echo "当前本机IP:$install_ip"
 
 #安装 libfastcommon、perl依赖，下载libfastcommon-master.zip，上传到服务器的/usr目录下。
 yum -y install perl gcc
