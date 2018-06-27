@@ -34,7 +34,7 @@ mkdir -p /usr/local/zookeeper/data
 mkdir -p /tmp/zookeeper
 
 #将配置文件中的这个值,原值：dataDir=/tmp/zookeeper 改为：dataDir=/usr/local/zookeeper/data
-sed -e "s#dataDir=/tmp/zookeeper#dataDir=/usr/local/zookeeper/data#g" /usr/local/zookeeper/conf/zoo.cfg
+sed -i "s#dataDir=/tmp/zookeeper#dataDir=/usr/local/zookeeper/data#g" /usr/local/zookeeper/conf/zoo.cfg
 
 #防火墙开放2181端口
 firewall-cmd --zone=public --add-port=2181/tcp --permanent
