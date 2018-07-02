@@ -17,7 +17,7 @@ cd /usr/local/src
 wget https://github.com/istorkbox/install/raw/master/centos7_jdk8.sh && sh centos7_jdk8.sh;
 
 #download nexus and install
-if [ ! -d 'nexus' ]; then
+if [ -d 'nexus' ]; then
 	echo "nexus has installed"
 else
 	if [ ! -f 'nexus-3.12.1-01-unix.tar.gz' ]; then
@@ -37,8 +37,6 @@ else
 	##//虚拟机选项配置文件
 	# vim /usr/local/nexus/bin/nexus.vmoptions                  
 	sed -i "s#-Xms1200M#-Xms512M#g" /usr/local/nexus/bin/nexus.vmoptions
-
-	-Xms1200M
 	
 	##启动 Nexus（默认端口是8081），Nexus 常用的一些命令包括：
 	# /usr/local/nexus/bin/nexus {start|stop|run|run-redirect|status|restart|force-reload}，
