@@ -11,7 +11,8 @@ echo "当前版本为:$install_version"
 echo "本机ip为:$install_ip"
 
 #安装 libfastcommon、perl依赖，下载libfastcommon-master.zip，上传到服务器的/usr目录下。
-yum -y install perl gcc
+yum -y install gcc automake autoconf libtool make 
+yum -y install perl make cmake gcc gcc-c++
 cd /usr/local/src
 wget -c https://github.com/happyfish100/libfastcommon/archive/V1.0.36.tar.gz -O libfastcommon-1.0.36.tar.gz
 # download from tencent cloud
@@ -59,4 +60,4 @@ echo "对于FastDFS-Storage安装时,需手动输入tracker的IP为(即:FASTDFS_
 #直接kill即可让server进程正常退出或可以使用killall命令 
 # killall fdfs_trackerd 
 #使用FastDFS自带的stop.sh脚本
-# /usr/bin/stop.sh /usr/local/bin/fdfs_trackerd /etc/fdfs/tracker.conf
+# /usr/bin/stop.sh /usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf

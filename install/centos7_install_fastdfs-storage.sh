@@ -21,9 +21,12 @@ echo "当前版本为:$install_version"
 echo "当前本机IP:$install_ip"
 
 #安装 libfastcommon、perl依赖，下载libfastcommon-master.zip，上传到服务器的/usr目录下。
-yum -y install perl gcc
+yum -y install gcc automake autoconf libtool make 
+yum -y install perl make cmake gcc gcc-c++
 cd /usr/local/src
 wget -c https://github.com/happyfish100/libfastcommon/archive/V1.0.36.tar.gz -O libfastcommon-1.0.36.tar.gz
+# download from tencent cloud
+#wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/libfastcommon-1.0.36.tar.gz
 tar -zxvf libfastcommon-1.0.36.tar.gz
 cd libfastcommon-1.0.36
 ./make.sh
@@ -32,6 +35,8 @@ cd libfastcommon-1.0.36
 #编译安装fastdfs
 cd /usr/local/src
 wget -c https://github.com/happyfish100/fastdfs/archive/V5.11.tar.gz -O fastdfs-5.11.tar.gz
+# download from tencent cloud
+#wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/fastdfs-5.11.tar.gz
 tar -zxvf fastdfs-5.11.tar.gz
 mv fastdfs-5.11 /usr/local/fastdfs
 cd /usr/local/fastdfs
@@ -56,7 +61,7 @@ cd /usr/bin
 /usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart
 
 #验证
-root     15959     1  0 11:46 ?        00:00:00 /usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart
+#root     15959     1  0 11:46 ?        00:00:00 /usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart
 ps -ef|grep fdfs_storaged
 
 echo "FastDFS-Storage停止:killall fdfs_storaged"
@@ -67,4 +72,4 @@ echo "FastDFS-Storage服务器IP:$install_ip"
 #直接kill即可让server进程正常退出或可以使用killall命令 
 # killall fdfs_storaged 
 #使用FastDFS自带的stop.sh脚本
-# /usr/bin/stop.sh /usr/local/bin/fdfs_storaged /etc/fdfs/storage.conf
+# /usr/bin/stop.sh /usr/bin/fdfs_storaged /etc/fdfs/storage.conf
