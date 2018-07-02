@@ -17,7 +17,7 @@ cd /usr/local/src
 wget https://github.com/istorkbox/install/raw/master/centos7_jdk8.sh && sh centos7_jdk8.sh;
 
 #download nexus and install
-if if [ ! -d 'nexus' ]; then
+if [ ! -d 'nexus' ]; then
 	echo "nexus has installed"
 else
 	if [ ! -f 'nexus-3.12.1-01-unix.tar.gz' ]; then
