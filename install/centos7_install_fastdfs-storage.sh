@@ -1,5 +1,6 @@
 #分布式文件系统FastDFS
 #https://www.jianshu.com/p/1c71ae024e5e
+#https://blog.csdn.net/xyang81/article/details/52837974
 #FastDFS-Storage安装（存储服务器）
 
 #获取或设置FastDFS的Tracker服务器IP
@@ -12,7 +13,7 @@ if [ "${isY}" != "y" ] && [ "${isY}" != "Y" ] && [ "${isY}" != "yes" ] && [ "${i
 exit 1
 fi
 
-
+#环境说明
 cd /usr/local/src
 install_dir=`pwd`
 install_version=fastdfs-5.11

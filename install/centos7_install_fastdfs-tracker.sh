@@ -1,5 +1,6 @@
 #分布式文件系统FastDFS
 #https://www.jianshu.com/p/1c71ae024e5e
+#https://blog.csdn.net/xyang81/article/details/52837974
 #FastDFS-Tracker安装（跟踪服务器）
 
 cd /usr/local/src

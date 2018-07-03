@@ -1,6 +1,6 @@
 #分布式文件系统FastDFS
 #https://www.jianshu.com/p/1c71ae024e5e
-
+#https://blog.csdn.net/xyang81/article/details/52837974
 #FastDFS-Storage安装（存储服务器）-Nginx
 
 
@@ -11,6 +11,7 @@
 # /usr/local/nginx/conf/nginx.conf的listen 8888;
 ##如果要修改为80, 上面两个要一起修改
 
+yum -y update
 
 #获取或设置FastDFS的Tracker服务器IP
 echo "需手动设置-跟踪服务器IP地址"
@@ -23,6 +24,7 @@ exit 1
 fi
 
 
+#环境说明
 cd /usr/local/src
 install_dir=`pwd`
 install_version=nginx-1.15.0
@@ -34,7 +36,7 @@ echo "当前本机IP:$install_ip"
 
 #安装依赖
 yum -y install gcc gcc-c++ automake autoconf libtool make cmake
-yum -y install perl pcre* zlib openssl openssl-devel
+yum -y install perl pcre* zlib openssl openssl-devel pcre pcre-devel
 
 
 cd /usr/local/src
@@ -51,7 +53,7 @@ if [ -f 'fastdfs-nginx-module_v1.16.zip' ]; then
 else
 	tar -zxvf fastdfs-nginx-module_v1.16.tar.gz
 	#如果是网上下载的原始文件,修改fastdfs-nginx-module的config 配置文件
-	sed -i "s#CORE_INCS=\"\$CORE_INCS /usr/local/include/fastdfs /usr/local/include/fastcommon/\"#CORE_INCS=\"\$CORE_INCS /usr/include/fastdfs /usr/include/fastcommon/\"#g" /usr/local/src/abc2/fastdfs-nginx-module/src/config
+	sed -i "s#CORE_INCS=\"\$CORE_INCS /usr/local/include/fastdfs /usr/local/include/fastcommon/\"#CORE_INCS=\"\$CORE_INCS /usr/include/fastdfs /usr/include/fastcommon/\"#g" /usr/local/src/fastdfs-nginx-module/src/config
 fi
 
 
