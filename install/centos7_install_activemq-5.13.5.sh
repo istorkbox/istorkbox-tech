@@ -50,14 +50,18 @@ wget https://github.com/istorkbox/istorkbox-tech/raw/master/install/activemq-5.1
 wget https://github.com/istorkbox/istorkbox-tech/raw/master/install/activemq-5.13.5/jetty-realm.properties
 #wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/activemq-5.13.5/jetty-realm.properties
 
-cp -rf /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf.bak
+rm -rf /usr/local/activemq-5.13.5/conf/activemq.xml
+rm -rf /usr/local/activemq-5.13.5/conf/jetty-realm.properties
 cp -rf /usr/local/src/activemq.xml /usr/local/activemq-5.13.5/conf/activemq.xml
 cp -rf /usr/local/src/jetty-realm.properties /usr/local/activemq-5.13.5/conf/jetty-realm.properties
 
+
 ##/usr/local/activemq-5.13.5/conf/jetty.xml可修改控制台端口
 # <property name="port" value="8161"/>
-cd /usr/local/activemq-5.13.5
+
+
 #启动
+cd /usr/local/activemq-5.13.5
 /usr/local/activemq-5.13.5/bin/activemq start
 
 
