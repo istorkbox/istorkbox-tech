@@ -35,6 +35,25 @@ rm -rf /usr/local/activemq-5.13.5
 mv apache-activemq-5.13.5 /usr/local/activemq-5.13.5
 
 
+#安全配置（消息安全）
+#ActiveMQ 如果不加入安全机制的话，任何人只要知道消息服务的具体地址(包括 ip，端口，消息地址
+#[队列或者主题地址]，)， 都可以肆无忌惮的 发送、 接收消息。 关 于 ActiveMQ 安装配置
+http://activemq.apache.org/security.html
+cp -rf /usr/local/activemq-5.13.5/conf/activemq.xml /usr/local/activemq-5.13.5/conf/activemq.xml.bak
+cp -rf /usr/local/activemq-5.13.5/conf/jetty.xml /usr/local/activemq-5.13.5/conf/jetty.xml.bak
+cp -rf /usr/local/activemq-5.13.5/conf/jetty-realm.properties /usr/local/activemq-5.13.5/conf/jetty-realm.properties.bak
+
+cd /usr/local/src
+wget https://github.com/istorkbox/istorkbox-tech/raw/master/install/activemq-5.13.5/activemq.xml
+#wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/activemq-5.13.5/activemq.xml
+
+wget https://github.com/istorkbox/istorkbox-tech/raw/master/install/activemq-5.13.5/jetty-realm.properties
+#wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/activemq-5.13.5/jetty-realm.properties
+
+cp -rf /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf.bak
+cp -rf /usr/local/src/activemq.xml /usr/local/activemq-5.13.5/conf/activemq.xml
+cp -rf /usr/local/src/jetty-realm.properties /usr/local/activemq-5.13.5/conf/jetty-realm.properties
+
 ##/usr/local/activemq-5.13.5/conf/jetty.xml可修改控制台端口
 # <property name="port" value="8161"/>
 cd /usr/local/activemq-5.13.5
