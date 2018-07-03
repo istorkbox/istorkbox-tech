@@ -12,6 +12,7 @@ if [ "${isY}" != "y" ] && [ "${isY}" != "Y" ] && [ "${isY}" != "yes" ] && [ "${i
 exit 1
 fi
 
+
 cd /usr/local/src
 install_dir=`pwd`
 install_version=fastdfs-5.11
@@ -20,9 +21,14 @@ echo "当前目录为:$install_dir"
 echo "当前版本为:$install_version"
 echo "当前本机IP:$install_ip"
 
+
 #安装 libfastcommon、perl依赖，下载libfastcommon-master.zip，上传到服务器的/usr目录下。
 yum -y install gcc automake autoconf libtool make 
 yum -y install perl make cmake gcc gcc-c++
+
+
+#下载libfastcommon和fastdfs
+#编译安装libfastcommon
 cd /usr/local/src
 wget -c https://github.com/happyfish100/libfastcommon/archive/V1.0.36.tar.gz -O libfastcommon-1.0.36.tar.gz
 # download from tencent cloud
@@ -31,6 +37,7 @@ tar -zxvf libfastcommon-1.0.36.tar.gz
 cd libfastcommon-1.0.36
 ./make.sh
 ./make.sh install
+
 
 #编译安装fastdfs
 cd /usr/local/src
@@ -42,6 +49,7 @@ mv fastdfs-5.11 /usr/local/fastdfs
 cd /usr/local/fastdfs
 ./make.sh
 ./make.sh install
+
 
 #fastDFS命令目录：/usr/bin
 #fastDFS配置文件目录:/etc/fdfs
@@ -56,17 +64,18 @@ sed -i "s#base_path=/home/yuqing/fastdfs#base_path=/data/fastdfs/storage#g" /etc
 sed -i "s#store_path0=/home/yuqing/fastdfs#store_path0=/data/fastdfs/storage#g" /etc/fdfs/storage.conf
 sed -i "s#tracker_server=192.168.209.121:22122#tracker_server=$FASTDFS_TRACKER_SERVER_IP:22122#g" /etc/fdfs/storage.conf
 
+
 #启动FASTDFS
 cd /usr/bin
 /usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart
 
+
 #验证
 #root     15959     1  0 11:46 ?        00:00:00 /usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart
-ps -ef|grep fdfs_storaged
-
+ps -ef | grep fdfs_storaged
 echo "FastDFS-Storage停止:killall fdfs_storaged"
-
 echo "FastDFS-Storage服务器IP:$install_ip"
+
 
 ##停止
 #直接kill即可让server进程正常退出或可以使用killall命令 
