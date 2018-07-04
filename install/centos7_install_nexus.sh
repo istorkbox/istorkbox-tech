@@ -53,6 +53,8 @@ else
 	##到此安装完毕。下面访问服务器 localhost:8081，可以看到：
 	
 	curl localhost:8081
+	echo "http://IP地址:8081"
+	echo "nexus默认用户名和密码 用户名:admin 密码:admin123"
 	echo "nexus install success"
 
 fi
