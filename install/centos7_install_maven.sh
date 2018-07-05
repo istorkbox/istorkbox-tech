@@ -3,6 +3,15 @@
 #安装文件镜像
 #http://mirrors.aliyun.com/apache/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
 #https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/apache-maven-3.5.3-bin.tar.gz
+##maven配置阿里云的镜像源地址，vim /usr/local/maven3.5.3/conf/settings.xml将下面内容添加进 mirrors 节点
+# <mirror>
+#    <!--This sends everything else to /public -->
+#    <id>nexus-aliyun</id>
+#    <mirrorOf>*</mirrorOf>
+#    <name>Nexus aliyun</name>
+#    <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+# </mirror>
+
 if type wget >/dev/null 2>&1; then
 	echo '...'
 else
@@ -40,4 +49,7 @@ else
 	fi
 	
 	rm apache-maven-3.5.3-bin.tar.gz
+	
+	echo "if show '-bash: java command not found', execute the following commands:"
+	echo "source /etc/profile"
 fi
