@@ -41,6 +41,13 @@ source /etc/bashrc
 #此时我们能查看 git 版本号，说明我们已经安装成功了。
 git --version
 
+#安装git-lfs
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash -
+
+yum makecache
+
+yum install -y git-lfs
+
 
 #3.创建 git 账号密码
 #创建 git 账号
