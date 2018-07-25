@@ -32,9 +32,9 @@ else
 	#download from tencent cloud
 	#wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/Python-3.7.0.tar.xz
 	
-	tar -jxvf Python-3.7.0.tar.xz
+	tar Jxvf Python-3.7.0.tar.xz
 	cd /usr/local/src/Python-3.7.0
-	./configure --prefix=/usr/local/python3 
+	./configure --prefix=/usr/local/python3.7 
 	make && make install 
 	
 	#建立指向新python3和pip3的软链接
