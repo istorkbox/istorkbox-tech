@@ -4,6 +4,7 @@
 #https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tar.xz
 #https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/Python-3.5.1.tar.xz
 #https://blog.csdn.net/u010510962/article/details/80690084
+#https://www.cnblogs.com/blogjun/articles/8063989.html
 
 
 if type wget >/dev/null 2>&1; then
