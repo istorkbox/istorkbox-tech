@@ -29,9 +29,9 @@ else
 	yum install -y zlib-devel bzip2-devel openssl-devel ncurese-devel 
 	yum install -y openssl-devel
 	
-	wget https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tar.xz
+	#wget https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tar.xz
 	#download from tencent cloud
-	#wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/Python-3.5.1.tar.xz
+	wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/Python-3.5.1.tar.xz
 	
 	tar Jxvf Python-3.5.1.tar.xz
 	cd /usr/local/src/Python-3.5.1
