@@ -6,7 +6,7 @@
 #TencentCloud
 #https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/erlang-21.1-1.el7.centos.x86_64.rpm
 #https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/rabbitmq-server-3.7.8-1.el7.noarch.rpm
-123.207.70.98
+
 ###安装Erlang和rabbitmq
 	#rpm -Uvh https://dl.bintray.com/rabbitmq/rpm/erlang/21/el/7/x86_64/erlang-21.1-1.el7.centos.x86_64.rpm
 	rpm -Uvh https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/erlang-21.1-1.el7.centos.x86_64.rpm
