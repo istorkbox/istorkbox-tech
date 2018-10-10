@@ -7,6 +7,7 @@
 #https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/rocketmq-all-4.2.0-bin-release.zip
 #https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/rocketmq-all-4.3.0-bin-release.zip
 
+
 ###配置域名
 #192.168.241.101 paascloud-rocketmq-001
 #192.168.241.102 paascloud-rocketmq-002
@@ -18,9 +19,11 @@ cd /opt
 # wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/rocketmq-all-4.2.0-bin-release.zip
 # unzip rocketmq-all-4.2.0-bin-release.zip -d /usr/local/rocketmq
 
-wget http://mirrors.hust.edu.cn/apache/rocketmq/4.3.0/rocketmq-all-4.3.0-bin-release.zip
-unzip rocketmq-all-4.3.0-bin-release.zip -d /usr/local/rocketmq
-
+#wget http://mirrors.hust.edu.cn/apache/rocketmq/4.3.0/rocketmq-all-4.3.0-bin-release.zip
+wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/rocketmq-all-4.3.0-bin-release.zip
+#unzip rocketmq-all-4.3.0-bin-release.zip -d /usr/local/rocketmq
+unzip rocketmq-all-4.3.0-bin-release.zip
+mv rocketmq-all-4.3.0-bin-release /usr/local/rocketmq
 
 ###配置环境变量
 #vim /etc/profile
@@ -31,16 +34,18 @@ echo "export ROCKETMQ_HOME=/usr/local/rocketmq" >> /etc/profile
 echo "export PATH=$PATH::$ROCKETMQ_HOME/bin" >> /etc/profile
 source /etc/profile
 
+
 ###创建存储&日志文件
-mkdir -p /usr/local/rocketmq/data/master/store/commitlog
-mkdir -p /usr/local/rocketmq/data/slave/store/commitlog
-mkdir -p /usr/local/rocketmq/data/master/store/consumequeue
-mkdir -p /usr/local/rocketmq/data/slave/store/consumequeue
-mkdir -p /usr/local/rocketmq/data/master/store/index
-mkdir -p /usr/local/rocketmq/data/slave/store/index
 mkdir -p /usr/local/rocketmq/logs
 
+mkdir -p /usr/local/rocketmq/store
+mkdir -p /usr/local/rocketmq/store/commitlog
+mkdir -p /usr/local/rocketmq/store/consumequeue
+mkdir -p /usr/local/rocketmq/store/inde
+
+
 ###修改日志配置文件
+mkdir -p /usr/local/rocketmq/logs
 cd /usr/local/rocketmq/conf && sed -i 's#${user.home}#/usr/local/rocketmq#g' *.xml
 
 ###修改启动脚本参数
@@ -55,34 +60,32 @@ sed -i 's#JAVA_OPT="${JAVA_OPT} -server -Xms4g -Xmx4g -Xmn2g -XX:MetaspaceSize=1
 
 
 ###替换配置文件
-cd /usr/local/rocketmq/conf/2m-2s-sync
+cd /usr/local/rocketmq/conf/2m-noslave/
 mv broker-a.properties broker-a.properties.bak
-mv broker-a-s.properties broker-a-s.properties.bak
 mv broker-b.properties broker-b.properties.bak
-mv broker-b-s.properties broker-b-s.properties.bak
 
-###
 
-###启动服务
+###启动NameServer【两台机器】
 cd /usr/local/rocketmq/bin
+nohup sh mqnamesrv &
 
-#启动NameServer A 192.168.241.101
-nohup sh /usr/local/rocketmq/bin/mqnamesrv &
 
-#启动NameServer A 192.168.241.102
-nohup sh /usr/local/rocketmq/bin/mqnamesrv &
+###启动BrokerServer A【192.168.1.11】
+cd /usr/local/rocketmq/bin
+nohup sh mqbroker -c /usr/local/rocketmq/conf/2m-noslave/broker-a.properties >/dev/null 2>&1 &
+netstat -ntlp
+jps
+tail -f -n 500 /usr/local/rocketmq/logs/rocketmq/logs/broker.log
+tail -f -n 500 /usr/local/rocketmq/logs/rocketmq/logs/namesrv.log
 
-#启动BrokerServer A-master 192.168.241.101
-nohup sh /usr/local/rocketmq/bin/mqbroker -c /usr/local/rocketmq/conf/2m-2s-sync/broker-a.properties&
+###启动BrokerServer B【192.168.1.12】
+cd /usr/local/rocketmq/bin
+nohup sh mqbroker -c /usr/local/rocketmq/conf/2m-noslave/broker-b.properties >/dev/null 2>&1 &
+netstat -ntlp
+jps
+tail -f -n 500 /usr/local/rocketmq/logs/rocketmqlogs/broker.log
+tail -f -n 500 /usr/local/rocketmq/logs/rocketmqlogs/namesrv.log
 
-#启动BrokerServer A-slave 192.168.241.101
-nohup sh /usr/local/rocketmq/bin/mqbroker -c /usr/local/rocketmq/conf/2m-2s-sync/broker-a-s.properties&
-
-#启动BrokerServer B-master 192.168.241.102
-nohup sh /usr/local/rocketmq/bin/mqbroker -c /usr/local/rocketmq/conf/2m-2s-sync/broker-b.properties&
-
-#启动BrokerServer B-slave 192.168.241.102
-nohup sh /usr/local/rocketmq/bin/mqbroker -c /usr/local/rocketmq/conf/2m-2s-sync/broker-b-s.properties&
 
 ###是否启动成功
 # netstat -ntlp
@@ -97,15 +100,17 @@ nohup sh /usr/local/rocketmq/bin/mqbroker -c /usr/local/rocketmq/conf/2m-2s-sync
 # sh /usr/local/rocketmq/bin/mqshutdown namesrv
 # sh /usr/local/rocketmq/bin/mqshutdown broker
 
-###清理数据
-# rm -rf /usr/local/rocketmq/data/master
-# rm -rf /usr/local/rocketmq/data/slave
-# mkdir -p /usr/local/rocketmq/data/master/store/commitlog
-# mkdir -p /usr/local/rocketmq/data/slave/store/commitlog
-# mkdir -p /usr/local/rocketmq/data/master/store/consumequeue
-# mkdir -p /usr/local/rocketmq/data/slave/store/consumequeue
-# mkdir -p /usr/local/rocketmq/data/master/store/index
-# mkdir -p /usr/local/rocketmq/data/slave/store/index
+###数据清理
+# cd /usr/local/rocketmq/bin
+# sh mqshutdown broker
+# sh mqshutdown namesrv
+# --等待停止
+# rm -rf /usr/local/rocketmq/store
+# mkdir /usr/local/rocketmq/store
+# mkdir /usr/local/rocketmq/store/commitlog
+# mkdir /usr/local/rocketmq/store/consumequeue
+# mkdir /usr/local/rocketmq/store/index
+# --按照上面步骤重启NameServer与BrokerServer
 
 ###部署RocketMQ Console
 #wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/rocketmq-console-ng-1.0.0.jar
