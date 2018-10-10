@@ -7,11 +7,9 @@
 ###第一步：安装Erlang
 ###因为rabbitMQ是Erlang语言编写的，所以我们首先需要安装Erlang
 	#rpm -Uvh https://www.rabbitmq.com/releases/erlang/erlang-19.0.4-1.el7.centos.x86_64.rpm
-	
-###第二步、安装rabbitMQ-server
-	#rpm -Uvh https://www.rabbitmq.com/releases/erlang/erlang-19.0.4-1.el7.centos.x86_64.rpm
 	rpm -Uvh https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/erlang-19.0.4-1.el7.centos.x86_64.rpm
 	
+###第二步、安装rabbitMQ-server		
 	#wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.5.8/rabbitmq-server-3.5.8-1.noarch.rpm
 	wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/rabbitmq-server-3.5.8-1.noarch.rpm
 	yum -y install rabbitmq-server-3.5.8-1.noarch.rpm
