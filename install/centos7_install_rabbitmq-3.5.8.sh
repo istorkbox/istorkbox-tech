@@ -7,12 +7,20 @@
 #https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/rabbitmq-server-3.5.8-1.noarch.rpm
 #https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/rabbitmq_delayed_message_exchange-0.0.1.ez
 
+##对应主机host地址(二台主机host文件要保持一致)
+##192.168.1.211 v01-app-rabbitmq01
+##192.168.1.213 v01-app-rabbitmq02
+#echo "192.168.1.211 v01-app-rabbitmq01" >> /etc/hosts
+#echo "192.168.1.213 v01-app-rabbitmq02" >> /etc/hosts
+
+
 ###第一步：安装Erlang
 ###因为rabbitMQ是Erlang语言编写的，所以我们首先需要安装Erlang
 	#rpm -Uvh https://www.rabbitmq.com/releases/erlang/erlang-19.0.4-1.el7.centos.x86_64.rpm
 	rpm -Uvh https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/erlang-19.0.4-1.el7.centos.x86_64.rpm
 	
-###第二步、安装rabbitMQ-server		
+###第二步、安装rabbitMQ-server
+	yum -y install wget
 	#wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.5.8/rabbitmq-server-3.5.8-1.noarch.rpm
 	wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/rabbitmq-server-3.5.8-1.noarch.rpm
 	yum -y install rabbitmq-server-3.5.8-1.noarch.rpm
@@ -28,6 +36,10 @@
 ###第五步、关闭rabbit-server（验证命令）
 	service rabbitmq-server stop
 	service rabbitmq-server start
+	
+	#CentOS7
+	#systemctl start rabbitmq-server.service
+	#systemctl status rabbitmq-server.service
 
 ###第六步、查看状态
 	rabbitmqctl status
