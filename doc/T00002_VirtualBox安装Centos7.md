@@ -14,7 +14,7 @@
 
  [官网下载新版DVD ISO](https://www.centos.org/download/)
  
- [安装好的镜像](https://share.weiyun.com/5TTFKcH)
+ [安装好的镜像](https://share.weiyun.com/5TTFKcH)(登录账户:root 密码:123456)
 
 -  VirtualBox新建虚拟机
 

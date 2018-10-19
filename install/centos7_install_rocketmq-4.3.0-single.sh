@@ -55,8 +55,8 @@ cd /usr/local/rocketmq/conf && sed -i 's#${user.home}#/usr/local/rocketmq#g' *.x
 #vim /usr/local/rocketmq/bin/runserver.sh
 #JAVA_OPT="${JAVA_OPT} -server -Xms1g -Xmx1g -Xmn512m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m"
 
-#sed -i 's#JAVA_OPT="${JAVA_OPT} -server -Xms8g -Xmx8g -Xmn4g"#JAVA_OPT="${JAVA_OPT} -server -Xms512m -Xmx512m -Xmn128m"#g' /usr/local/rocketmq/bin/runbroker.sh
-sed -i 's#JAVA_OPT="${JAVA_OPT} -server -Xms8g -Xmx8g -Xmn4g"#JAVA_OPT="${JAVA_OPT} -server -Xms1g -Xmx1g -Xmn512m"#g' /usr/local/rocketmq/bin/runbroker.sh
+#sed -i 's#JAVA_OPT="${JAVA_OPT} -server -Xms8g -Xmx8g -Xmn4g"#JAVA_OPT="${JAVA_OPT} -server -Xms1g -Xmx1g -Xmn512m"#g' /usr/local/rocketmq/bin/runbroker.sh
+sed -i 's#JAVA_OPT="${JAVA_OPT} -server -Xms8g -Xmx8g -Xmn4g"#JAVA_OPT="${JAVA_OPT} -server -Xms512m -Xmx512m -Xmn128m"#g' /usr/local/rocketmq/bin/runbroker.sh
 sed -i 's#JAVA_OPT="${JAVA_OPT} -server -Xms4g -Xmx4g -Xmn2g -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m"#JAVA_OPT="${JAVA_OPT} -server -Xms1g -Xmx1g -Xmn512m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m"#g' /usr/local/rocketmq/bin/runserver.sh
 
 
