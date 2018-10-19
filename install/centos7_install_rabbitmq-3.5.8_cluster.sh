@@ -111,7 +111,9 @@ rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 
 
 ##注意!!!不然集群有问题
-#关闭防火墙或开放4369端口
+#关闭防火墙
+#或开放下面端口:
+# 4369 5672 25672 25672
 # systemctl stop firewalld
 
 
