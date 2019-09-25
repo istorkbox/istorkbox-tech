@@ -20,9 +20,9 @@ fi
 cd /usr/local/src
 
 #download zookeeper and install
-wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.12/zookeeper-3.4.12.tar.gz
+#wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.12/zookeeper-3.4.12.tar.gz
 #download from tencent cloud
-#wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/zookeeper-3.4.12.tar.gz
+wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/zookeeper-3.4.12.tar.gz
 
 tar -zxvf zookeeper-3.4.12.tar.gz
 mv zookeeper-3.4.12 /usr/local/zookeeper
