@@ -3,6 +3,13 @@
 #安装文件镜像
 #https://www.cnblogs.com/yaoyuan2/p/10540700.html
 #https://www.aerospike.com/artifacts/aerospike-server-community/4.5.1.5/aerospike-server-community-4.5.1.5-el7.tgz
+
+##如果需要,Centos7关闭防火墙
+#临时关闭
+# systemctl stop firewalld
+#禁止开机启动
+# systemctl disable firewalld
+
 if type wget >/dev/null 2>&1; then
 	echo '...'
 else

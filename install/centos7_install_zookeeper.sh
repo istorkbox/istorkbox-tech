@@ -25,7 +25,8 @@ cd /usr/local/src
 wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/zookeeper-3.4.12.tar.gz
 
 tar -zxvf zookeeper-3.4.12.tar.gz
-mv zookeeper-3.4.12 /usr/local/zookeeper
+mv zookeeper-3.4.12 zookeeper
+mv zookeeper /usr/local/zookeeper
 
 cd /usr/local/zookeeper/conf
 mv zoo_sample.cfg zoo.cfg
