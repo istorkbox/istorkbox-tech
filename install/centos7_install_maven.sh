@@ -30,7 +30,8 @@ cd /usr/local/src
 if type mvn >/dev/null 2>&1; then
 	echo "maven has installed"	
 else
-	wget http://mirrors.aliyun.com/apache/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
+	#wget http://mirrors.aliyun.com/apache/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
+	wget http://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
 	#download from tencent cloud
 	#wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/apache-maven-3.5.3-bin.tar.gz
 	tar -zxvf apache-maven-3.5.3-bin.tar.gz
