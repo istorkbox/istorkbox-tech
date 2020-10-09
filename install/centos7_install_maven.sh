@@ -1,17 +1,11 @@
 #!/bin/bash
-#apache-maven-3.5.3-bin.tar.gz
-#安装文件镜像
-#http://mirrors.aliyun.com/apache/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
-#https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/apache-maven-3.5.3-bin.tar.gz
-##maven配置阿里云的镜像源地址，vim /usr/local/maven3.5.3/conf/settings.xml将下面内容添加进 mirrors 节点
-# <mirror>
-#    <!--This sends everything else to /public -->
-#    <id>nexus-aliyun</id>
-#    <mirrorOf>*</mirrorOf>
-#    <name>Nexus aliyun</name>
-#    <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-# </mirror>
 
+#jdk-8u261-linux-x64.tar.gz
+#https://blog.csdn.net/ithomer/article/details/9288353
+
+echo 'start install jdk8'
+
+#install wget
 if type wget >/dev/null 2>&1; then
 	echo '...'
 else
@@ -19,38 +13,47 @@ else
 	yum -y install wget
 fi
 
-#check dir
-cd /usr/local/
+cd /usr/local
+
+# check downloads directory
 if [ ! -d 'src' ]; then
 	mkdir 'src'
 fi
-cd /usr/local/src
 
-#download maven and install
-if type mvn >/dev/null 2>&1; then
-	echo "maven has installed"	
+#download jdk8 and install
+if type java >/dev/null 2>&1; then
+	echo "jdk8 has installed, java home:$JAVA_HOME"
 else
-	#wget http://mirrors.aliyun.com/apache/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
-	wget http://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
-	#download from tencent cloud
-	#wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/apache-maven-3.5.3-bin.tar.gz
-	tar -zxvf apache-maven-3.5.3-bin.tar.gz
-	mv apache-maven-3.5.3 /usr/local/maven3.5.3
-	echo "MAVEN_HOME=/usr/local/maven3.5.3" >> /etc/profile
-	echo "PATH=\$PATH:\$MAVEN_HOME/bin" >> /etc/profile
-	echo "MAVEN_OPTS=\"-Xms256m -Xmx356m\"" >> /etc/profile
-	echo "export MAVEN_HOME PATH MAVEN_OPTS" >> /etc/profile
+	cd /usr/local/src
+	
+	if [ ! -f 'jdk-8u261-linux-x64.tar.gz' ]; then
+	  # download file from oracle website
+	  #sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u261-linux-x64.tar.gz"
+	  # download file from tencent clund
+	  #sudo wget https://istorkbox-1256921291.cos.ap-guangzhou.myqcloud.com/jdk-8u261-linux-x64.tar.gz
+	  sudo wget https://repo.huaweicloud.com/java/jdk/8u171-b11/jdk-8u171-linux-x64.tar.gz
+	fi
+	
+	tar -zxvf jdk-8u171-linux-x64.tar.gz
+	rm -rf /usr/local/jdk8
+	mv jdk1.8.0_171 /usr/local/jdk8
+	
+	echo "modify \'/etc/profile\' file."	
+	
+	echo "JAVA_HOME=/usr/local/jdk8" >> /etc/profile
+	echo "JRE_HOME=/usr/local/jdk8/jre" >> /etc/profile
+	echo "PATH=\$JAVA_HOME/bin:\$JRE_HOME/bin:\$PATH" >> /etc/profile
+	echo "export JAVA_HOME JRE_HOME CLASS_PATH PATH" >> /etc/profile
 	
 	source /etc/profile
 	
-	if type mvn >/dev/null 2>&1;  then
-		echo "maven install success"
+	if  type java >/dev/null 2>&1;  then
+		echo "jdk8 install success"
 	else
-		echo "maven install failure"
+		echo "jdk8 install failure"
 	fi
-	
-	rm apache-maven-3.5.3-bin.tar.gz
-	
+	#rm jdk-8u261-linux-x64.tar.gz
 	echo "if show '-bash: java command not found', execute the following commands:"
 	echo "source /etc/profile"
+	cd ..
 fi
